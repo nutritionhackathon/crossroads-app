@@ -10,52 +10,52 @@ import Food from './pages/Food';
 
 import { post } from 'axios';
 
-let showResponsePage = false;
-let showHelpPage = false;
-// place holder variables
-let categoriesPresent = (
-  <>
-    <Text>Grain</Text>
-  </>
-);
-let categoriesMissing = (
-  <>
-    <Text>Veggies</Text>
-    <Text>Fruit</Text>
-  </>
-);
-let foodSuggestions = (
-  <>
-    <Text>Replace x with y</Text>
-  </>
-);
+// let showResponsePage = false;
+// let showHelpPage = false;
+// // place holder variables
+// let categoriesPresent = (
+//   <>
+//     <Text>Grain</Text>
+//   </>
+// );
+// let categoriesMissing = (
+//   <>
+//     <Text>Veggies</Text>
+//     <Text>Fruit</Text>
+//   </>
+// );
+// let foodSuggestions = (
+//   <>
+//     <Text>Replace x with y</Text>
+//   </>
+// );
 
-function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <Home openCamera={() => alert(openCamera())} getHelp={() => getHelp()}></Home>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+// function HomeScreen() {
+//   return (
+//     <View style={styles.container}>
+//       <Home openCamera={() => alert(openCamera())} getHelp={() => getHelp()}></Home>
+//       <StatusBar style="auto" />
+//     </View>
+//   );
+// }
 
-function HelpScreen() {
-  return (
-    <View style={styles.container}>
-      <Help goBack={() => returnHome()} />
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+// function HelpScreen() {
+//   return (
+//     <View style={styles.container}>
+//       <Help goBack={() => returnHome()} />
+//       <StatusBar style="auto" />
+//     </View>
+//   );
+// }
 
-function ResponseScreen() {
-  return (
-    <View style={styles.container}>
-      <Food returnHome={() => returnHome()} categoriesPresent={categoriesPresent} categoriesMissing={categoriesMissing} foodSuggestions={foodSuggestions}/>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+// function ResponseScreen() {
+//   return (
+//     <View style={styles.container}>
+//       <Food returnHome={() => returnHome()} categoriesPresent={categoriesPresent} categoriesMissing={categoriesMissing} foodSuggestions={foodSuggestions}/>
+//       <StatusBar style="auto" />
+//     </View>
+//   );
+// }
 
 const Stack = createNativeStackNavigator();
 
@@ -63,8 +63,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Help" component={HelpScreen} />
+        <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
+        <Stack.Screen name="FoodScanner" component={FoodScanner} options={{headerShown: false}}/>
+        <Stack.Screen name="Help" component={Help} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

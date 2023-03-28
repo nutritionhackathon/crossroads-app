@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 
-export default function FoodScanner() {
+export default function FoodScanner({navigation}) {
     const [type, setType] = useState(CameraType.back);
     const [permission, requestPermission] = Camera.useCameraPermissions();
     const [image, setImage] = useState('');
@@ -67,6 +67,7 @@ export default function FoodScanner() {
 
 const styles = StyleSheet.create({
   container: {
+    zIndex: 1,
     flex: 1,
     justifyContent: 'center',
     width: "100%",
@@ -75,6 +76,7 @@ const styles = StyleSheet.create({
     height: "auto"
   },
   imageContainer: {
+    zIndex: 1,
     flex: 1,
     justifyContent: 'center',
     width: "100%",
