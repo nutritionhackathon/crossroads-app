@@ -46,7 +46,16 @@ export default function FoodScanner({navigation}) {
     } 
     return (
         <View style={styles.container}>
-            <Camera style={styles.camera} type={type} ratio={'1:1'} ref={ref => setCamera(ref)}/>
+            <Camera style={styles.camera} type={type} ratio={'1:1'} ref={ref => setCamera(ref)}>
+              <TouchableOpacity onPress={() => { navigation.navigate("Home")}}>
+                <Ionicons
+                    name='close-outline'
+                    size={32}
+                    color="white"
+                    style={styles.closeButton}
+                />
+              </TouchableOpacity>
+            </Camera>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.captureButton}
                     onPress={async () => {
@@ -136,4 +145,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  closeButton: {
+    alignSelf: "flex-end",
+    marginTop: "5%",
+  }
 })
