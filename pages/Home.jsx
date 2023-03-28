@@ -15,7 +15,7 @@ export default function Home({navigation}) {
                 style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', width:"100%" }}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                     <Button title="Take A Picture" onPress={() => { navigation.navigate("FoodScanner")}} paddingVertical={20} paddingHorizontal={50} borderRadius={10} marginBottom={10}/>
-                    <Button title="Help" onPress={() => { navigation.navigate("Help")}} paddingVertical={15} paddingHorizontal={35} borderRadius={10}/>
+                    <Button title="Help" onPress={() => { navigation.push("Help")}} paddingVertical={15} paddingHorizontal={35} borderRadius={10}/>
                 </View>
             </ImageBackground>
         </>
