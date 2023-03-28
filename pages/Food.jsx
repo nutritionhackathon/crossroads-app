@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, img } from "react-native";
+import { Text, View, Image } from "react-native";
 import Button from '../components/Button';
 
 export default function Food({ navigation, categoriesPresent, categoriesMissing, foodSuggestions }) {
@@ -14,7 +14,7 @@ export default function Food({ navigation, categoriesPresent, categoriesMissing,
                     paddingBottom: 10,
                 }}
             >
-                {/* <img src={require('../assets/meal.png') /}> */}
+                <Image source={require('../assets/meal.png')} />
                 <Text style={{ fontSize: 24 }}>Breakdown</Text>
             </View>
             <View>
@@ -43,6 +43,5 @@ export default function Food({ navigation, categoriesPresent, categoriesMissing,
             </View>
             <Button title="Return Home" onPress={() => { navigation.navigate("Home")}} />
         </>
-
     );
 }
