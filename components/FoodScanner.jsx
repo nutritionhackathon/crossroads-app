@@ -43,7 +43,7 @@ export default function FoodScanner() {
                 </View>
             </View>
         )
-    }
+    } 
     return (
         <View style={styles.container}>
             <Camera style={styles.camera} type={type} ratio={'1:1'} ref={ref => setCamera(ref)}/>

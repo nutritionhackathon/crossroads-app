@@ -5,10 +5,10 @@ import Button from '../components/Button';
 export default function Home({ openCamera, getHelp }) {
     return (
         <>
-                <View style={{ paddingTop: 50, alignItems: 'center', justifyContent: 'flex-start', backgroundColor:"#fffbef", width:"100%", paddingBottom:10, borderColor:"black", borderWidth:"2px"}}>
-                    <Text style={{fontSize : 24}} >NAME OF THE THING</Text>
-                    <Text>Home</Text>
-                </View>
+            <View style={{ paddingTop: 50, alignItems: 'center', justifyContent: 'flex-start', backgroundColor:"#fffbef", width:"100%", paddingBottom:10, borderColor:"black", borderWidth:"2px"}}>
+                <Text style={{fontSize : 24}} >NAME OF THE THING</Text>
+                <Text>Home</Text>
+            </View>
             <ImageBackground
                 source={require('../assets/FOOD.webp')}
                 style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', width:"100%" }}>
