@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, img } from "react-native";
 import Button from '../components/Button';
 
-export default function Food({ returnHome, categoriesPresent, categoriesMissing, foodSuggestions }) {
+export default function Food({ navigation, categoriesPresent, categoriesMissing, foodSuggestions }) {
     return (
         <>
             <View
@@ -19,11 +19,12 @@ export default function Food({ returnHome, categoriesPresent, categoriesMissing,
             </View>
             <View>
                 <Text style={{ fontSize: 20 }}>
-                    Food Categories that your meal has:
+                    Present Food Categories
                 </Text>
+                { /* categoriesPresent should be an unordered list */}
                 {categoriesPresent}
                 <Text style={{ fontSize: 20 }}>
-                    Food Categories that your meal is missing:
+                    Missing Food Categories
                 </Text>
                 {categoriesMissing}
             </View>
@@ -40,7 +41,7 @@ export default function Food({ returnHome, categoriesPresent, categoriesMissing,
                 <Text style={{ fontSize: 24 }}>Suggestions</Text>
                 {foodSuggestions}
             </View>
-            <Button title="Return Home" onPress={returnHome}></Button>
+            <Button title="Return Home" onPress={() => { navigation.navigate("Home")}} />
         </>
 
     );
