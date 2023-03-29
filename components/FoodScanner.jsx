@@ -35,9 +35,24 @@ export default function FoodScanner({navigation}) {
         //nst file = new File([blob], "temp.jpg", {type:"image/jpeg", lastModified:new Date()});
         //alert(JSON.stringify(blob));
         
+<<<<<<< HEAD
         axios.post('http://192.168.1.106:5000/image-receiver', { baseString: based})
         .then(function (response) {
             navigation.navigate("Food", { imagePath: image, responseData: response.data})
+=======
+        axios.post('http://10.0.0.20:5000/image-receiver', { baseString: based})
+        .then(function (response) {
+            alert('http works');
+            alert(response.data)
+            categoriesMissing = (
+                <ul>
+                    <Text>Veggies</Text>
+                    <Text>Fruit</Text>
+                </ul>
+            );
+
+            navigation.navigate("Food");
+>>>>>>> 7a7493b24765a12144f1bf6863c8c971b203ec3c
         })
         .catch(function (error) {
             alert(error)
