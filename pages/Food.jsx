@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Image } from "react-native";
+import { Text, View, ScrollView, StyleSheet, Image } from "react-native";
 import Button from '../components/Button';
 
 function isUnhealthyCategory(category) {
@@ -8,26 +8,37 @@ function isUnhealthyCategory(category) {
 
 export default function Food({ route, navigation }) {
     const {imagePath, responseData} = route.params;
-    const yourFood = responseData[0][0];
+    let yourFood = responseData[0][0];
+    if(yourFood.includes("_")){
+        temp = yourFood.split("_")
+        yourFood = "";
+        temp.forEach((val, index) =>{
+            yourFood+=val
+            if(index!=temp.length-1) yourFood+=" ";
+        })
+    }
+
     
     const foodSuggestions = responseData[0].slice(1).map((foodClass) => {
+        //if(foodClass.contains("Vegetable")) foodClass = "Fruits and Vegetables"
+        //if(foodClass.contains(""))
         return (
-            <Text>{'\u2022 ' + foodClass}</Text>
+            <Text style={styles.listText}>{'\u2022 ' + foodClass}</Text>
             );
         });
         
     let numUnhealthyCategories = 0;
-    const foodClasses = responseData[1].map((foodClass) => {
+    const foodClasses = responseData[1].map((foodClass, index) => {
         if (isUnhealthyCategory(foodClass))
             numUnhealthyCategories++;
             
         return (
-            <Text>{'\u2022 ' + foodClass}</Text>
+            <Text style={styles.listText} key={index}>{'\u2022 ' + foodClass}</Text>
         );
     });
 
     return (
-        <>
+        <ScrollView>
             <View style={{ paddingTop: 40, alignItems: 'center', justifyContent: 'flex-start', backgroundColor:"#fffbef", width:"100%", paddingBottom:5, borderColor:"black", borderWidth:2, marginBottom:0}}>
                 <Text style={{ fontSize: 36 }}>Breakdown</Text>
             </View>
@@ -40,7 +51,7 @@ export default function Food({ route, navigation }) {
                     paddingBottom: 10,
                 }}
             >
-                <Text style={{ fontSize: 16, paddingBottom:10, paddingLeft:5, paddingRight:5 }}>Your food, {yourFood}, was classified as {numUnhealthyCategories >= 1 ? "unhealthy" : "healthy"}</Text>
+                <Text style={{ fontSize: 16, paddingBottom:10, paddingLeft:5, paddingRight:5 }}>Your meal was classified as {numUnhealthyCategories >= 1 ? "unhealthy" : "healthy!"}</Text>
                 <Image source={{ uri: imagePath }} style={{ maxWidth: '40%', minHeight: "32%", backgroundColor: "blue", aspectRatio: 1 }}/>
             </View>
             <View style={{
@@ -50,8 +61,10 @@ export default function Food({ route, navigation }) {
                     justifyContent: "flex-start",
                     width: "100%",
                 }}>
-                <Text style={{ fontSize: 20, alignSelf: "center", paddingBottom:10}}>Food Categories</Text>
-                {foodClasses}
+                <Text style={{ fontSize: 15, alignSelf: "center", paddingBottom:10}}>Here are some of the food categories we detected in your meal</Text>
+                <View style={{marginLeft:"10%"}}>
+                    {foodClasses}
+                </View>
             </View>
             <View
                 style={{
@@ -63,8 +76,10 @@ export default function Food({ route, navigation }) {
                     paddingBottom: 10,
                 }}
             >
-                <Text style={{ fontSize: 20, alignSelf: "center" }}>Suggestions</Text>
-                {foodSuggestions}
+                <Text style={{ fontSize: 15, alignSelf: "center" }}>{numUnhealthyCategories == 0 ? "While your meal is healthy, there are always ways to make it healthier! For example, we have detected that you have "+ yourFood+" in your meal, which you could replace with these alternatives for more nutrition or variety in the future " : ""}</Text>
+                <View style={{marginLeft: "10%", marginTop: "5%"}}>
+                    {foodSuggestions}
+                </View>
             </View>
             <View style={{
                     paddingTop: 10,
@@ -75,6 +90,13 @@ export default function Food({ route, navigation }) {
                 }}>
                 <Button title="Return Home" onPress={() => { navigation.navigate("Home")} } borderRadius={10}/> 
             </View>
-        </>
+        </ScrollView>
     );
 }
+
+const styles = StyleSheet.create({
+    listText: {
+        marginLeft: "10%",
+        marginVertical: "2%"
+    }
+})
