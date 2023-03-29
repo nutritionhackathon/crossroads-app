@@ -15,18 +15,27 @@ export default function FoodScanner({navigation}) {
     function toggleCameraType() {
         setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
     }
+    const blobToBase64 = (blob) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(blob);
+      return new Promise(resolve => {
+        reader.onloadend = () => {
+          resolve(reader.result);
+        };
+      });
+    };
 
     async function postImage() {
+        let based = "";
         const response = await fetch(image);
-        const blob = await response.blob();
-        let formData = new FormData();
-        let fileName = 'temp.jpg';
-        let file = new File([blob], fileName);
-        formData.append('file', file, fileName);
-        // formData.append('user', username);
-        axios.post('http://10.0.0.20:5000/image-receiver', formData, {
-            headers: { 'Content-Type': 'multipart/form-data' }
-        })
+        const blobbed = await response.blob();
+        await blobToBase64(blobbed).then(async (res) =>{
+          based = res;
+        });
+        //nst file = new File([blob], "temp.jpg", {type:"image/jpeg", lastModified:new Date()});
+        //alert(JSON.stringify(blob));
+        
+        axios.post('http://10.0.0.20:5000/image-receiver', { baseString: based})
         .then(function (response) {
             alert('http works');
             alert(response.data)
