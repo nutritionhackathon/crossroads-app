@@ -26,7 +26,7 @@ export default function Help({navigation}) {
                 <Text>
                     Example of a good photo
                 </Text>
-                <Image source={require('../assets/goodExample.png')} />
+                <Image source={require('../assets/goodExample.png')} style={{width: '100%', height: 300, resizeMode: 'contain'}} />
                 <Button title="Return Home" onPress={() => { navigation.goBack()}}></Button>
             </View>
         </>

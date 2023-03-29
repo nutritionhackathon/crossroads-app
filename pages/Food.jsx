@@ -14,7 +14,7 @@ export default function Food({ navigation, categoriesPresent, categoriesMissing,
                     paddingBottom: 10,
                 }}
             >
-                <Image source={require('../assets/meal.png')} />
+                {/* <Image source={require('../assets/meal.png')} /> */}
                 <Text style={{ fontSize: 24 }}>Breakdown</Text>
             </View>
             <View>

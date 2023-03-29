@@ -1,12 +1,11 @@
 import React from 'react';
 import {Text, View, ImageBackground} from 'react-native';
 import Button from '../components/Button';
-import FoodScanner from '../components/FoodScanner';
 
 export default function Home({navigation}) {
     return (
         <>
-            <View style={{ paddingTop: 50, alignItems: 'center', justifyContent: 'flex-start', backgroundColor:"#fffbef", width:"100%", paddingBottom:10, borderColor:"black", borderWidth:"2px"}}>
+            <View style={{ paddingTop: 50, alignItems: 'center', justifyContent: 'flex-start', backgroundColor:"#fffbef", width:"100%", paddingBottom:10, borderColor:"black", borderWidth:2}}>
                 <Text style={{fontSize : 24}} >NAME OF THE THING</Text>
                 <Text>Home</Text>
             </View>

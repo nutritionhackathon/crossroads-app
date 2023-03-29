@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 
+import { post } from 'axios';
+import axios from 'axios';
+
 export default function FoodScanner({navigation}) {
     const [type, setType] = useState(CameraType.back);
     const [permission, requestPermission] = Camera.useCameraPermissions();
@@ -11,6 +14,35 @@ export default function FoodScanner({navigation}) {
 
     function toggleCameraType() {
         setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
+    }
+
+    function postImage(image) {
+        alert('you pressed the button')
+      
+      axios.get('http://192.168.1.140:5000', 'hi')
+      .then(function(response) {
+        alert('http works');
+         
+        alert(response.data)
+        categoriesMissing = (
+          <ul>
+            <Text>Veggies</Text>
+            <Text>Fruit</Text>
+          </ul>
+        );
+      
+        categoriesPresent = (
+          <ul>
+            <Text>Grain</Text>
+          </ul>
+        );
+      
+        navigation.navigate("Food");
+      })
+      .catch(function (error) {
+        alert(error)
+        console.log(error.response.data)
+      });
     }
 
     if (!permission) {
@@ -35,7 +67,7 @@ export default function FoodScanner({navigation}) {
                             Retake Photo
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.submitButton}>
+                    <TouchableOpacity onPress={() => postImage(image)} style={styles.submitButton}>
                         <Text style={styles.buttonText}>
                             Upload Photo
                         </Text>
