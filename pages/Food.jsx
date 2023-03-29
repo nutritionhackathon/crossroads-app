@@ -23,7 +23,6 @@ export default function Food({ route, navigation }) {
         );
     });
 
-    console.log(imagePath);
     return (
         <>
         <View style={{ paddingTop: 40, alignItems: 'center', justifyContent: 'flex-start', backgroundColor:"#fffbef", width:"100%", paddingBottom:5, borderColor:"black", borderWidth:2, marginBottom:0}}>
@@ -75,7 +74,7 @@ export default function Food({ route, navigation }) {
                     width: "50%",
                     paddingBottom: 10,
                 }}>
-                <Button title="Return Home" onPress={() => { navigation.navigate("Home")} } borderRadius={10}/>
+                <Button title="Return Home" onPress={() => { navigation.navigate("Home")} } borderRadius={10}/> 
             </View>
         </>
     );
