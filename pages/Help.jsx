@@ -13,6 +13,8 @@ export default function Help({navigation}) {
                 <Text>
                     This app can help you to improve your meal by identifying food categories that are present or missing.
                     Additionally, we will provide suggestions with healthy alternative meals.
+                </Text>
+                <Text>
                     Start by pressing the 'Take Picture' button.
                     You can choose to upload an existing photo or use your camera.
                     Ensure that your photo clearly has food displayed and is in view.
