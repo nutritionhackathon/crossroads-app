@@ -33,7 +33,7 @@ export default function FoodScanner({navigation}) {
           based = res;
         });
         
-        axios.post('http://10.20.94.36:5000/image-receiver', { baseString: based})
+        axios.post('http://10.0.0.20:5000/image-receiver', { baseString: based})
         .then(function (response) {
             navigation.navigate("Food", { imagePath: image, responseData: response.data})
         })

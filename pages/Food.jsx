@@ -76,7 +76,7 @@ export default function Food({ route, navigation }) {
                     paddingBottom: 10,
                 }}
             >
-                <Text style={{ fontSize: 15, alignSelf: "center" }}>{numUnhealthyCategories == 0 ? "While your meal is healthy, there are always ways to make it healthier! For example, we have detected that you have "+ yourFood+" in your meal, which you could replace with these alternatives for more nutrition or variety in the future " : ""}</Text>
+                <Text style={{ fontSize: 15, alignSelf: "center" }}>{numUnhealthyCategories == 0 ? "Great job, your meal is considered healthy! We have noticed that you are eating a "+ yourFood+" in your meal, which you could potentially replace with these alternatives for variety in the future: " : "There are various ways you can make your meal healthier. For example, we noticed that you are eating a "+ yourFood+". To make your meal more balanced, consider trying these alternatives next time: "}</Text>
                 <View style={{marginLeft: "10%", marginTop: "5%"}}>
                     {foodSuggestions}
                 </View>
@@ -96,7 +96,7 @@ export default function Food({ route, navigation }) {
 
 const styles = StyleSheet.create({
     listText: {
-        marginLeft: "10%",
+        marginLeft: "7%",
         marginVertical: "2%"
     }
 })
