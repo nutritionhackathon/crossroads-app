@@ -37,16 +37,7 @@ export default function FoodScanner({navigation}) {
         
         axios.post('http://192.168.1.106:5000/image-receiver', { baseString: based})
         .then(function (response) {
-            alert('http works');
-            alert(response.data)
-            categoriesMissing = (
-                <ul>
-                    <Text>Veggies</Text>
-                    <Text>Fruit</Text>
-                </ul>
-            );
-
-            navigation.navigate("Food");
+            navigation.navigate("Food", { imagePath: image, responseData: response.data})
         })
         .catch(function (error) {
             alert(error)
