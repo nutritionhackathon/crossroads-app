@@ -11,14 +11,14 @@ export default function Help({navigation}) {
             </View>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: "2%"}}>
                 <Text>
-                    This app can help you to improve your meal by identifying food categories that are present or missing.
+                    This app can help you to improve your meal by identifying food categories that are present and whether your meal is healthy or not.
                     Additionally, we will provide suggestions with healthy alternative meals.
                 </Text>
                 <Text>
                     Start by pressing the 'Take Picture' button.
-                    You can choose to upload an existing photo or use your camera.
+                    {/* You can choose to upload an existing photo or use your camera. */}
                     Ensure that your photo clearly has food displayed and is in view.
-                    Below is an example of a good photo.
+                    Shown below is an example of a good photo.
                 </Text>
                 <Image source={require('../assets/goodExample.png')} style={{width: '100%', height: 300, resizeMode: 'contain'}} />
             </View>

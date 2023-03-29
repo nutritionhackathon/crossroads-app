@@ -2,23 +2,31 @@ import React from "react";
 import { Text, View, Image } from "react-native";
 import Button from '../components/Button';
 
+function isUnhealthyCategory(category) {
+    return (category == "Dessert" || category == "Fried food")
+}
+
 export default function Food({ route, navigation }) {
     const {imagePath, responseData}=route.params;
 
     const yourFood = responseData[0][0];
+
+    let numUnhealthyCategories = 0;
     
-    const foodSuggestions = responseData[0].map((foodClass) => {
+    const foodSuggestions = responseData[0].slice(1).map((foodClass) => {
         return (
             <Text>
-                {foodClass}
+                {'\u2022 ' + foodClass}
             </Text>
         );
-    }).slice(1);
+    });
     
     const foodClasses = responseData[1].map((foodClass) => {
+        if (isUnhealthyCategory(foodClass))
+            numUnhealthyCategories++;
         return (
             <Text>
-                {foodClass}
+                {'\u2022 ' + foodClass}
             </Text>
         );
     });
@@ -37,7 +45,7 @@ export default function Food({ route, navigation }) {
                     paddingBottom: 10,
                 }}
             >
-                <Text style={{ fontSize: 16, paddingBottom:10 }}>Your Food was classified as {yourFood}</Text>
+                <Text style={{ fontSize: 16, paddingBottom:10, paddingLeft:5, paddingRight:5 }}>Your food, {yourFood}, was classified as {numUnhealthyCategories >= 1 ? "unhealthy" : "healthy"}</Text>
                 <Image source={{ uri: imagePath }} style={{ maxWidth: '40%', minHeight: "32%", backgroundColor: "blue", aspectRatio: 1 }}/>
             </View>
             <View style={{
@@ -48,10 +56,10 @@ export default function Food({ route, navigation }) {
                     width: "100%",
                 }}>
                 <Text style={{ fontSize: 20, alignSelf: "center", paddingBottom:10}}>
-                    Present Food Categories
+                    Food Categories
                 </Text>
-                { /* categoriesPresent should be an unordered list */}
                 {foodClasses}
+
             </View>
 
             <View
