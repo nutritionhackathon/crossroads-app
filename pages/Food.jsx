@@ -7,35 +7,30 @@ function isUnhealthyCategory(category) {
 }
 
 export default function Food({ route, navigation }) {
-    const {imagePath, responseData}=route.params;
-
+    const {imagePath, responseData} = route.params;
     const yourFood = responseData[0][0];
-
-    let numUnhealthyCategories = 0;
     
     const foodSuggestions = responseData[0].slice(1).map((foodClass) => {
         return (
-            <Text>
-                {'\u2022 ' + foodClass}
-            </Text>
-        );
-    });
-    
+            <Text>{'\u2022 ' + foodClass}</Text>
+            );
+        });
+        
+    let numUnhealthyCategories = 0;
     const foodClasses = responseData[1].map((foodClass) => {
         if (isUnhealthyCategory(foodClass))
             numUnhealthyCategories++;
+            
         return (
-            <Text>
-                {'\u2022 ' + foodClass}
-            </Text>
+            <Text>{'\u2022 ' + foodClass}</Text>
         );
     });
 
     return (
         <>
-        <View style={{ paddingTop: 40, alignItems: 'center', justifyContent: 'flex-start', backgroundColor:"#fffbef", width:"100%", paddingBottom:5, borderColor:"black", borderWidth:2, marginBottom:0}}>
-                    <Text style={{ fontSize: 36 }}>Breakdown</Text>
-                    </View>
+            <View style={{ paddingTop: 40, alignItems: 'center', justifyContent: 'flex-start', backgroundColor:"#fffbef", width:"100%", paddingBottom:5, borderColor:"black", borderWidth:2, marginBottom:0}}>
+                <Text style={{ fontSize: 36 }}>Breakdown</Text>
+            </View>
             <View
                 style={{
                     paddingTop: 10,
@@ -55,13 +50,9 @@ export default function Food({ route, navigation }) {
                     justifyContent: "flex-start",
                     width: "100%",
                 }}>
-                <Text style={{ fontSize: 20, alignSelf: "center", paddingBottom:10}}>
-                    Food Categories
-                </Text>
+                <Text style={{ fontSize: 20, alignSelf: "center", paddingBottom:10}}>Food Categories</Text>
                 {foodClasses}
-
             </View>
-
             <View
                 style={{
                     paddingTop: 10,
