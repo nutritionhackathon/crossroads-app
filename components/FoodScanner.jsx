@@ -16,30 +16,33 @@ export default function FoodScanner({navigation}) {
         setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
     }
 
-    function postImage() {
-      axios.post('http://10.0.0.20:5000/image-receiver', 'hi')
-      .then(function(response) {
-        alert('http works');
-         
-        alert(response.data)
-        categoriesMissing = (
-          <ul>
-            <Text>Veggies</Text>
-            <Text>Fruit</Text>
-          </ul>
-        );
-      
-        categoriesPresent = (
-          <ul>
-            <Text>Grain</Text>
-          </ul>
-        );
-      
-        navigation.navigate("Food");
-      })
-      .catch(function (error) {
-        alert(error)
-      });
+    async function postImage() {
+        const response = await fetch(image);
+        const blob = await response.blob();
+        let formData = new FormData();
+        let fileName = 'temp.jpg';
+        let file = new File([blob], fileName);
+        formData.append('file', file, fileName);
+        // formData.append('user', username);
+        axios.post('http://10.0.0.20:5000/image-receiver', formData, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+        })
+        .then(function (response) {
+            alert('http works');
+            alert(response.data)
+            categoriesMissing = (
+                <ul>
+                    <Text>Veggies</Text>
+                    <Text>Fruit</Text>
+                </ul>
+            );
+
+            navigation.navigate("Food");
+        })
+        .catch(function (error) {
+            alert(error)
+            console.log(error)
+        });
     }
 
     if (!permission) {
