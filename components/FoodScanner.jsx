@@ -16,10 +16,8 @@ export default function FoodScanner({navigation}) {
         setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
     }
 
-    function postImage(image) {
-        alert('you pressed the button')
-      
-      axios.get('http://192.168.1.140:5000', 'hi')
+    function postImage() {
+      axios.post('http://10.0.0.20:5000/image-receiver', 'hi')
       .then(function(response) {
         alert('http works');
          
@@ -41,7 +39,6 @@ export default function FoodScanner({navigation}) {
       })
       .catch(function (error) {
         alert(error)
-        console.log(error.response.data)
       });
     }
 
@@ -60,14 +57,14 @@ export default function FoodScanner({navigation}) {
     if(image && image.length>0){
         return(
             <View style={styles.imageContainer}>
-                <Image source={{ uri: image }} style={{ maxWidth: '100%', minHeight: "80%", backgroundColor: "blue", aspectRatio: 1 }} />
+                <Image source={{ uri: image }} style={{ maxWidth: '100%', minHeight: "80%", backgroundColor: "blue", aspectRatio: 1 }}/>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity onPress={(() => setImage(''))} style={styles.retakeButton}>
                         <Text style={styles.buttonText}>
                             Retake Photo
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => postImage(image)} style={styles.submitButton}>
+                    <TouchableOpacity onPress={postImage} style={styles.submitButton}>
                         <Text style={styles.buttonText}>
                             Upload Photo
                         </Text>
@@ -153,6 +150,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12,
+    marginBottom: 20,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center"
@@ -163,6 +161,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12,
+    marginBottom: 20,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center"
@@ -173,12 +172,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12,
+    marginBottom: 20,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
   },
   closeButton: {
     alignSelf: "flex-end",
-    marginTop: "5%",
+    marginTop: "10%",
   }
 })
