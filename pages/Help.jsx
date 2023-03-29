@@ -6,7 +6,7 @@ import Button from '../components/Button';
 export default function Help({navigation}) {
     return (
         <>
-            <View>
+            <View style={{ paddingTop: 50, paddingLeft:15, paddingRight:15, alignItems: 'center', justifyContent: 'flex-start', backgroundColor:"#fffbef", width:"100%", paddingBottom:10, borderColor:"black", borderWidth:2}}>
                 <Text style={{fontSize : 24}} >Help Page</Text>
                 <Text>
                     This app can help you to improve your meal by identifying food categories that are present or missing
