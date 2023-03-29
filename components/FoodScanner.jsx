@@ -35,7 +35,7 @@ export default function FoodScanner({navigation}) {
         //nst file = new File([blob], "temp.jpg", {type:"image/jpeg", lastModified:new Date()});
         //alert(JSON.stringify(blob));
         
-        axios.post('http://192.168.1.106:5000/image-receiver', { baseString: based})
+        axios.post('http://192.168.1.135:5000/image-receiver', { baseString: based})
         .then(function (response) {
             navigation.navigate("Food", { imagePath: image, responseData: response.data})
         })
