@@ -22,37 +22,3 @@ export default function App() {
     </NavigationContainer>
   )
 }
-
-/* export default function App() {
-  if (showResponsePage)
-    return (
-      <View style={styles.container}>
-        <Food returnHome={() => returnHome()} categoriesPresent={categoriesPresent} categoriesMissing={categoriesMissing} foodSuggestions={foodSuggestions}/>
-        <StatusBar style="auto" />
-      </View>
-    );
-
-    if (showHelpPage)
-      return (
-        <View style={styles.container}>
-          <Help goBack={() => returnHome()} />
-          <StatusBar style="auto" />
-        </View>
-      );
-
-  return (
-    <View style={styles.container}>
-      <FoodScanner/>
-      <StatusBar style="auto" />
-    </View>
-  );
-} */
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
