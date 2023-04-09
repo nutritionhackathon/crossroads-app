@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, StyleSheet, Pressable } from 'react-native';
 
 export default function Button(props) {
-  const { onPress, title = 'Save', paddingVertical = 12, paddingHorizontal = 32, borderRadius, marginBottom} = props;
+  const { onPress, title = 'Save', paddingVertical = 12, paddingHorizontal = 32, borderRadius = 10, marginBottom} = props;
 
   styles = StyleSheet.create({
     button: {

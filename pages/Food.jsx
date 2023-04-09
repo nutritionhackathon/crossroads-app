@@ -88,7 +88,7 @@ export default function Food({ route, navigation }) {
                     width: "50%",
                     paddingBottom: 10,
                 }}>
-                <Button title="Return Home" onPress={() => { navigation.navigate("Home")} } borderRadius={10}/> 
+                <Button title="Return Home" onPress={() => { navigation.navigate("Home")} }/> 
             </View>
         </ScrollView>
     );
