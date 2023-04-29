@@ -7,7 +7,7 @@
     "icon": "./assets/apple.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/FOOD.webp",
+      "image": "./assets/foodbg.jpg",
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },

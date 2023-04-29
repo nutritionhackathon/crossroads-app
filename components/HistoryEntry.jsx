@@ -8,7 +8,7 @@ function getResponseData() {
 export default function HistoryEntry({ navigation, text, imageURI }) {
     return (
         <Pressable style={styles.container} onPress={() => {
-            navigation.navigate("Food", { imagePath: imageURI, responseData: getResponseData()});
+            navigation.navigate("Breakdown", { imagePath: imageURI, responseData: getResponseData()});
         }}>
             <Image source={require('../assets/goodExample.png')} style={styles.icon} />
             <Text style={styles.text}>{text}</Text>
